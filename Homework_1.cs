@@ -7,6 +7,5 @@ class Program
     double z = 4*x*x + 3*y;
         Console.WriteLine("X = "+ x + ", Y = " + y);
         Console.WriteLine("The value of Z is: " + z);
-        
     }
 }
