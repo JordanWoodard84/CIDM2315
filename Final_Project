@@ -1,1 +1,109 @@
+using System;
+using System.Collections.Generic;
+class Program
+{
+    public static void Main(string[] args)
+    {
+        //Login
+        Console.WriteLine("CIDM2315 Final Project: Jordan Woodard");
+        Console.WriteLine("-------Welcome To Buff Kitchen--------");
+        Console.WriteLine("Please Input Username");
+        string username = Console.ReadLine();
+        if (username == "Alice")
+        {
+            Console.WriteLine("Please Input Password");
+        }
+        string password = (Console.ReadLine());
+        if (password == "123")
+        {
+            Console.WriteLine("Login Successful");
 
+        }
+        else
+        { Console.WriteLine("Login Unsucessful"); }
+        List<string> customer = new List<string>();
+        List<double> totals = new List<double> { };
+       
+        //Home page
+        while (true)
+        {
+            Console.WriteLine("**Cashier: " + username + "**");
+            Console.WriteLine("*******************");
+            Console.WriteLine("Please select");
+            Console.WriteLine("1. Start new order");
+            Console.WriteLine("2. Check submitted orders");
+            Console.WriteLine("3. Removed Finished orders");
+            Console.WriteLine("4. Log out system");
+            Console.WriteLine("*******************");
+            string input = Console.ReadLine();
+
+
+            //new order
+            if (input == "1")
+            {
+                Console.WriteLine("-->Customer Name:");
+
+                customer.Add(Console.ReadLine());
+                Console.WriteLine("-->Select Entree:");
+                Console.WriteLine("0 - Food: Chicken Sandwich  Price:5.99");
+                Console.WriteLine("1 - Food: Chicken Nuggets  Price:8.99");
+                Console.WriteLine("2 - Food: Chicken Strips  Price:9.99");
+                Console.WriteLine("3 - Food: Beef Burger  Price:6.99");
+                List<string> entree = new List<string> { "Chicken Sandwhich", "Chicken Nuggets", "Chicken Strips", "Beef Burger" };
+                List<double> entreeP = new List<double> { 5.99, 8.99, 9.99, 6.99 };
+                int eNum = Convert.ToInt16(Console.ReadLine());
+
+
+                Console.WriteLine("-->Select Drink:");
+                Console.WriteLine("0 - Drink: Iced Tea  Price:2.99");
+                Console.WriteLine("1 - Drink: Soda  Price:1.99");
+                Console.WriteLine("2 - Drink: Lemonade  Price:2.99");
+                Console.WriteLine("3 - Drink: Coffee  Price:3.99");
+                List<string> drink = new List<string> { " Iced Tea", "Soda", "Lemonade", "Coffee" };
+                List<double> drinkP = new List<double> { 2.99, 1.99, 2.99, 3.99 };
+                int dNum = Convert.ToInt16(Console.ReadLine());
+
+                Console.WriteLine("-->Select Side:");
+                Console.WriteLine("0 - Side: Potato Fries  Price:3.99");
+                Console.WriteLine("1 - Side: Salad  Price:4.99");
+                Console.WriteLine("2 - Side: Fruit Cup  Price:9.99");
+                Console.WriteLine("3 - Side: Potato Chips  Price:2.99");
+                List<string> side = new List<string> { "Potato Fries", "Salad", "Fruite Cup", "Potato Chips" };
+                List<double> sideP = new List<double> { 3.99, 4.99, 9.99, 2.99 };
+                int sNum = Convert.ToInt16(Console.ReadLine());
+
+                Console.WriteLine("-----Order Summary-----");
+                Console.WriteLine("Food: " + entree[eNum] + "  " + entreeP[eNum]);
+                Console.WriteLine("Drink: " + drink[dNum] + "  " + drinkP[dNum]);
+                Console.WriteLine("Side: " + side[sNum] + "  " + sideP[sNum]);
+                Console.WriteLine("-----Total: " + (entreeP[eNum] + drinkP[eNum] + sideP[eNum]) + "-----");
+
+
+                totals.Add((entreeP[eNum] + drinkP[eNum] + sideP[eNum]));
+            }
+            if (input == "2")
+            {
+                Console.WriteLine("-----Number of orders: " + customer.Count + "-----");
+                int i = 0;
+                for (i = 0; i < customer.Count; i++)
+                {
+                    Console.WriteLine($"-> {i} - Customer: {customer[i]}   Total: {totals[i]}");
+                }
+                Console.WriteLine("----------------------------");
+            }
+            if (input == "3")
+            {
+                Console.WriteLine("-----Input order ID to remove a finished order:-----");
+                string x = Console.ReadLine();
+                customer.Remove(x);
+                totals.Remove(Convert.ToDouble(x));
+            }
+            if (input == "4")
+            {
+                Console.WriteLine("Logging Out");
+                Environment.Exit(0);
+            }
+
+        }
+    }
+}
