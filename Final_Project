@@ -20,10 +20,14 @@ class Program
 
         }
         else
-        { Console.WriteLine("Login Unsucessful"); }
+        {
+            Console.WriteLine("Login Unsucessful");
+            Environment.Exit(0);
+        }
+
         List<string> customer = new List<string>();
         List<double> totals = new List<double> { };
-       
+
         //Home page
         while (true)
         {
@@ -94,9 +98,9 @@ class Program
             if (input == "3")
             {
                 Console.WriteLine("-----Input order ID to remove a finished order:-----");
-                string x = Console.ReadLine();
-                customer.Remove(x);
-                totals.Remove(Convert.ToDouble(x));
+                int x = Convert.ToInt16(Console.ReadLine());
+                customer.RemoveAt(x);
+                totals.RemoveAt(x);
             }
             if (input == "4")
             {
